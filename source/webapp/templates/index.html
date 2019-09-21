@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block menu %}
+    <li class="nav-item">
+            <a class="nav-link" href="{% url 'record_add' %}">Добавить запись </a>
+    </li>
 {% endblock %}
 {% block content %}
    <h1 class="bg-info text-white text-center">Гостевая книга</h1>
