@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+   <h1 class="bg-info text-white text-center">Гостевая книга</h1>
+    {% csrf_token %}
+            {% for record in records %}
+                <div class="card mb-3 text-center">
+                  <div class="card-header bg-info text-white"> {{ record.name }} ({{ record.email }})</div>
+                  <div class="card-body">
+                    <p class="card-text">{{ record.record }}</p>
+                    <a href="" class="btn btn-info">Редактировать</a>
+                    <a href="" class="btn btn-info">Удалить</a>
+                  </div>
+                </div>
+            {% endfor %}
+{% endblock %}
