@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.records_index_view, name = 'index'),
     path('records/add/', views.records_add_view, name = 'record_add'),
+    path('records/update/<int:pk>', views.records_update_view, name = 'record_update'),
 
 ]
