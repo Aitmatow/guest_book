@@ -3,6 +3,6 @@
 {% block content %}
     <h1> Редактировать запись </h1>
     <form method="post" action="{% url 'record_update' record.pk %}">
-        {% include 'partial/records_form.html' with button_text="Update" %}
+        {% include 'partial/records_form.html' with button_text="Редактировать" %}
     </form>
 {% endblock %}

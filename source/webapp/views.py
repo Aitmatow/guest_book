@@ -1,14 +1,25 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from webapp.forms import RecordsForm
+from webapp.forms import RecordsForm, RecordsSearch
 from webapp.models import Records, STATUS_CHOICES
 
 
 def records_index_view(request, *args, **kwargs):
-        records = Records.objects.all().filter(status='active').order_by('-create_date')
-        return render(request, 'index.html', context={
-            'records' : records
-        })
+        if (request.method == 'GET'):
+            records = Records.objects.all().filter(status='active').order_by('-create_date')
+            form = RecordsSearch()
+            return render(request, 'index.html', context={
+                'records' : records,
+                'form' : form
+            })
+        elif (request.method == 'POST'):
+            searched = request.POST.get('searched_value')
+            form = RecordsSearch()
+            records = Records.objects.all().filter(name__icontains=searched, status='active').order_by('-create_date')
+            return render(request, 'index.html', context={
+                'records' : records,
+                'form' : form
+            })
 
 def records_add_view(request, *args, **kwargs):
     if request.method == 'GET':
