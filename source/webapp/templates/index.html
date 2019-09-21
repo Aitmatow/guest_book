@@ -13,7 +13,7 @@
                   <div class="card-body">
                     <p class="card-text">{{ record.record }}</p>
                     <a href="{% url 'record_update' record.pk %}" class="btn btn-info"><span class="fa fa-edit"></span> Редактировать</a>
-                    <a href="" class="btn btn-info"><span class="fa fa-trash"></span> Удалить</a>
+                    <a href="{% url 'record_delete' record.pk %}" class="btn btn-info"><span class="fa fa-trash"></span> Удалить</a>
                   </div>
                 </div>
             {% endfor %}

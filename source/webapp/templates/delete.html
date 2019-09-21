@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Delete record{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <h1 class="text-center">Вы точно хотите удалить запись об авторе  "{{ record.name }}"?</h1>
+    <form method="POST" action="{% url "record_delete" record.pk %}" class="text-center">
+        {% csrf_token %}
+        <p><input type="submit" value="Удалить" class="btn btn-primary"></p>
+        <p><a href="{% url "index" %}" class="btn btn-danger">Отмена</a></p>
+    </form>
+{% endblock %}
